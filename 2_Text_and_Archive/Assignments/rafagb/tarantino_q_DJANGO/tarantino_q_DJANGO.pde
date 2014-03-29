@@ -20,10 +20,11 @@ boolean rectOver = false;
 void setup() {
   size(1280, 893);
   background(255);
-  smooth(6);
+  smooth(8);
   noStroke();
-
-  swiss911 = createFont("swiss911-ucm-bt", 40);
+  //imprimir lista de fonts para ver el nombre correcto
+//  println(PFont.list());
+  swiss911 = createFont("Swiss911BT-UltraCompressed", 40);
   textFont(swiss911);
   textAlign(CENTER, CENTER);
 
@@ -32,26 +33,23 @@ void setup() {
   makeStopList("stop.txt");
   //load questions
   makeQuestionList("questionsDJANGO.txt");
-  
-  
-
 }
 
 void draw() {
   //draw each question
-//  translate((width/2)-100, (height/2)-500);
+  //  translate((width/2)-100, (height/2)-500);
   for (Question qN:displayKillBill) {
     qN.update();
     //   println(qN.sentenceQ);
     qN.render();
   }
-
 }
 
 void makeQuestionList(String url) {
   String[] rows= loadStrings (url);
   String doc= join(rows, " ");
   String[] questions= RiTa.splitSentences(doc);
+
   processQuestions(questions);
 }
 
@@ -60,13 +58,14 @@ void processQuestions(String[] qq) {
   ArrayList<String> goodWords = new ArrayList();
   for (String q:qq) {
     if (checkStop(q)) goodWords.add(q);
-
-    for (String q2:goodWords) {
-      //println(q2+"end");
-      Question qN= new Question(q2);  
-      displayKillBill.add(qN);
-    }
   }
+
+  for (String q2:goodWords) {
+    //println(q2+"end");
+    Question qN= new Question(q2);  
+    displayKillBill.add(qN);
+  }
+
   for (int i =0;i< displayKillBill.size();i++) {
     Question qN=displayKillBill.get(i);
     qN.y= i*70;

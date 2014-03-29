@@ -20,7 +20,7 @@ class Question {
   void update() {
     tWidth=textWidth(sentenceQ);
     tw= int(tWidth);
-    println(tw);
+    //println(tw);
 
     if (mouseX >= x-tw/2 && mouseX <= x+tw/2 && mouseY >= y-30 && mouseY <= y+30) {
       hover = true;
@@ -59,8 +59,8 @@ class Question {
       fill(0, 30);
       //      rect(width/2, height-70, textWidth("A FILM BY QUENTIN TARANTINO"), 40);
       //      fill(255);
-      textSize(20);
-      text("A FILM BY QUENTIN TARANTINO", 200, height-70);
+//      textSize(20);
+//      text("A FILM BY QUENTIN TARANTINO", 200, height-70);
     } 
     else {
       fill(0);
@@ -70,11 +70,12 @@ class Question {
       //      fill(0,30);
       //      rect(width/2, height-70, textWidth("A FILM BY QUENTIN TARANTINO"), 40);
       fill(red, 30);
-      textSize(20);
-      text("A FILM BY QUENTIN TARANTINO", 200, height-70);
+    
     }
 
-
+  textSize(50);
+      text("A FILM BY QUENTIN TARANTINO", 200, height-70);
+      textSize(30);
     //    popMatrix();
   }
 
